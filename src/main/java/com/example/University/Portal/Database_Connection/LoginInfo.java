@@ -13,7 +13,7 @@ public class LoginInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column()
     @Id
-    private int userId;
+    private Long userId;
     @Column(unique = true)
     private String email;
     @Column()
