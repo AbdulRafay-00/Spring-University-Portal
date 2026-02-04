@@ -1,5 +1,6 @@
 package com.example.University.Portal.Database_Connection;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class LoginInfo {
     @Column()
     private String role;
 
-    @OneToOne(mappedBy = "LoginInfo")
+    @OneToOne(mappedBy = "loginInfo", cascade = CascadeType.ALL, orphanRemoval =  true)
     StudentInfo studentInfo;
 
     LoginInfo() {}

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity()
 
@@ -26,6 +28,10 @@ public class StudentInfo {
 
     @Column()
     private String stuPhone;
+
+    @OneToOne
+    @JoinColumn(name = "user_Id" ,referencedColumnName = "userId")
+    LoginInfo loginInfo;
 
     // constructor
     StudentInfo() {
@@ -63,6 +69,15 @@ public class StudentInfo {
 
     public void setStuPhone(String stuPhone) {
         this.stuPhone = stuPhone;
+    }
+
+
+    public void setloginInfo (LoginInfo loginInfo){
+        this.loginInfo = loginInfo;
+    }
+
+    public LoginInfo getLoginInfo(){
+        return loginInfo;
     }
 
 }
