@@ -26,6 +26,9 @@ public class LoginInfo {
     @OneToOne(mappedBy = "loginInfo", cascade = CascadeType.ALL, orphanRemoval =  true)
     StudentInfo studentInfo;
 
+    @OneToOne(mappedBy = "loginInfo", cascade = CascadeType.ALL, orphanRemoval =  true)
+    TeacherInfo teacherInfo;
+
     LoginInfo() {}
 
 
@@ -63,4 +66,11 @@ public class LoginInfo {
         return studentInfo;
     }
 
+    public void setteacherInfo (TeacherInfo teacherInfo){
+        this.teacherInfo = teacherInfo;
+    }
+
+    public TeacherInfo getTeacherInfo(){
+        return teacherInfo;
+    }
 }
