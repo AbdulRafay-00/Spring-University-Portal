@@ -19,7 +19,7 @@ public class StudentInfo {
     private String stuName;
 
     @Column()
-    private  int age;
+    private int age;
 
     @Column()
     private String stuEmail;
@@ -27,11 +27,42 @@ public class StudentInfo {
     @Column()
     private String stuPhone;
 
-// constructor
-    StudentInfo(){}
-    
-    StudentInfo(String name, int age, String email, String phone){
-        this.stuName = name;
-        
+    // constructor
+    StudentInfo() {
     }
+
+    // getter setter
+
+    public String getStuName() {
+        return stuName;
+    }
+
+    public void setStuName(String stuName) {
+        this.stuName = stuName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getStuEmail() {
+        return stuEmail;
+    }
+
+    public void setStuEmail(String stuEmail) {
+        this.stuEmail = stuEmail;
+    }
+
+    public String getStuPhone() {
+        return stuPhone;
+    }
+
+    public void setStuPhone(String stuPhone) {
+        this.stuPhone = stuPhone;
+    }
+
 }
