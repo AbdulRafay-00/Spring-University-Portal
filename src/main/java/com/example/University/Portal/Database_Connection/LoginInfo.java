@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,14 +22,11 @@ public class LoginInfo {
     @Column()
     private String role;
 
-    LoginInfo() {
-    }
+    @OneToOne(mappedBy = "LoginInfo")
+    StudentInfo studentInfo;
 
-    LoginInfo(String email, String password, String role) {
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
+    LoginInfo() {}
+
 
     // Getter And Setters
 
@@ -54,6 +52,14 @@ public class LoginInfo {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void  setStudentInfo (StudentInfo studentInfo){
+        this.studentInfo = studentInfo;
+    }
+
+    public StudentInfo getStudentInfo(){
+        return studentInfo;
     }
 
 }
