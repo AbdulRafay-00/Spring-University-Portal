@@ -34,7 +34,7 @@ public class StudentInfo {
     LoginInfo loginInfo;
 
     // constructor
-    StudentInfo() {
+    public StudentInfo() {
     }
 
     // getter setter

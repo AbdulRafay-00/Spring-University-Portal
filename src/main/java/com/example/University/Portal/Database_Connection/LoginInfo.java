@@ -29,7 +29,7 @@ public class LoginInfo {
     @OneToOne(mappedBy = "loginInfo", cascade = CascadeType.ALL, orphanRemoval =  true)
     TeacherInfo teacherInfo;
 
-    LoginInfo() {}
+    public LoginInfo() {}
 
 
     // Getter And Setters

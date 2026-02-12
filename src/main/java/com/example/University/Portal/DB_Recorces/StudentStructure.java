@@ -14,8 +14,6 @@ public class StudentStructure {
 
     private int age;
 
-    private String stuEmail;
-
     private String stuPhone;
 
 
@@ -27,7 +25,6 @@ public class StudentStructure {
         this.role = role;
         this.stuName = stuName;
         this.age = age;
-        this.stuEmail = stuEmail;
         this.stuPhone = stuPhone;
     }
 
@@ -69,14 +66,6 @@ public class StudentStructure {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getStuEmail() {
-        return stuEmail;
-    }
-
-    public void setStuEmail(String stuEmail) {
-        this.stuEmail = stuEmail;
     }
 
     public String getStuPhone() {
