@@ -14,4 +14,10 @@ public class SignupPost {
         return entity;
     }
     
+
+// teacher signup
+    @PostMapping("/techSignup")
+    public String teacher_signup(@RequestBody String entity) {
+        return entity;
+    }
 }
