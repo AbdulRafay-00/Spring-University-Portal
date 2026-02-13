@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.University.Portal.DB_Recorces.StudentStructure;
 import com.example.University.Portal.Database_Connection.LoginInfo;
 import com.example.University.Portal.Database_Connection.StudentInfo;
+import com.example.University.Portal.ExtraServices.RoleClass;
 import com.example.University.Portal.Repository.AuthRepository;
 import com.example.University.Portal.Repository.StuDetailRepository;
 
@@ -19,7 +20,7 @@ public class SignUpServices {
     @Autowired
     StuDetailRepository stuDetailRepository;
 
-    public String verifyUser(StudentStructure entity) {
+    public String verifyUser(StudentStructure entity , RoleClass roleClass) {
         if(authRepository.findByEmail(entity.getEmail()).isPresent()) {
             return "User already exists";
         }else {
