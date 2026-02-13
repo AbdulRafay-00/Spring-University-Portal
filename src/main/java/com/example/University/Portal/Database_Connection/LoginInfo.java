@@ -1,8 +1,12 @@
 package com.example.University.Portal.Database_Connection;
 
+import com.example.University.Portal.ExtraServices.RoleClass;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,8 +24,11 @@ public class LoginInfo {
     private String email;
     @Column()
     private String password;
-    @Column()
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    @Column (name = "role")
+    private RoleClass role;
+
 
     @OneToOne(mappedBy = "loginInfo", cascade = CascadeType.ALL, orphanRemoval =  true)
     StudentInfo studentInfo;
@@ -50,11 +57,11 @@ public class LoginInfo {
         this.password = password;
     }
 
-    public String getRole() {
+    public RoleClass getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(RoleClass role) {
         this.role = role;
     }
 

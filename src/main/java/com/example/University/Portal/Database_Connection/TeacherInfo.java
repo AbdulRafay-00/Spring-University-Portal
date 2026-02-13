@@ -28,7 +28,7 @@ public class TeacherInfo {
     @JoinColumn(name = "user_Id" , referencedColumnName = "userId" )
     LoginInfo loginInfo;
 // constructor
-    TeacherInfo(){}
+    public TeacherInfo(){}
 
 // getter/setter
 
