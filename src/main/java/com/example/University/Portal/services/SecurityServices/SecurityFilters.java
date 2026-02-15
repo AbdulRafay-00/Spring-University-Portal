@@ -23,7 +23,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         )
 
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers( "/signup/stuSignup").permitAll()
+            .requestMatchers( "/signup/stuSignup", "/signup/techSignup").permitAll()
             .anyRequest().authenticated()
         )
 
