@@ -15,7 +15,10 @@ public class StudentInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column()
     @Id
-    private long StuId;
+    private long Id;
+
+    @Column(unique = true)
+    private String studentId;
 
     @Column()
     private String stuName;
@@ -29,8 +32,6 @@ public class StudentInfo {
     @Column()
     private String stuPhone;
 
-    @Column(unique = true)
-    private String studentCode;
 
     @Column(nullable = false)
     private int joiningYear;
@@ -86,11 +87,11 @@ public class StudentInfo {
     }
 
     public void setStudentCode(String code) {
-        this.studentCode = code;
+        this.studentId = code;
     }
 
     public String getStudentCode() {
-        return studentCode;
+        return studentId;
     }
 
     public void setJoiningYear(int year){

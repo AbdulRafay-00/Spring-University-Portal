@@ -104,6 +104,7 @@ import com.example.University.Portal.DB_Recorces.TeachetStructure;
 import com.example.University.Portal.Database_Connection.LoginInfo;
 import com.example.University.Portal.Database_Connection.StudentInfo;
 import com.example.University.Portal.Database_Connection.TeacherInfo;
+import com.example.University.Portal.ExtraServices.BusinessIdGeneratorService;
 import com.example.University.Portal.ExtraServices.RoleClass;
 import com.example.University.Portal.Repository.AuthRepository;
 import com.example.University.Portal.Repository.StuDetailRepository;
@@ -122,6 +123,9 @@ public class SignUpServices {
 
     @Autowired
     TeacherDetailRepository teacherInfo;
+
+    @Autowired
+    BusinessIdGeneratorService businessId;
 
 // STUDENT VERIFICATION
     public String verifyStudent(StudentStructure entity) {
@@ -172,6 +176,7 @@ public class SignUpServices {
             studentInfo.setStuEmail(s.getEmail());
             studentInfo.setStuPhone(s.getStuPhone());
             studentInfo.setJoiningYear(LocalDate.now().getYear());
+            studentInfo.setStudentCode(businessId.generateStudentCode());
 
             studentInfo.setloginInfo(loginInfo);
             loginInfo.setStudentInfo(studentInfo);
@@ -188,7 +193,7 @@ public class SignUpServices {
             teacherInfo.setTechPhone(t.getTechPhone());
             teacherInfo.setTechEmail(t.getEmail());
             teacherInfo.setJoiningYear(LocalDate.now().getYear());
-
+            teacherInfo.setTeacherCode(businessId.generateTeacherCode());
 
             // Link teacher and login
             teacherInfo.setLoginInfo(loginInfo);

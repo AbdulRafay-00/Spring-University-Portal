@@ -7,5 +7,6 @@ import com.example.University.Portal.Database_Connection.StudentInfo;
 
 @Repository
 public interface StuDetailRepository extends JpaRepository<StudentInfo, Long> {
-    long  CountByJoiningYear(int joiningYear);
+    long countByJoiningYear(int joiningYear);
+
 }

@@ -20,7 +20,7 @@ public class BusinessIdGeneratorService {
     public String generateTeacherCode() {
         int year = LocalDate.now().getYear();
 
-        long count = teacherRepo.CountByJoiningYear(year);
+        long count = teacherRepo.countByJoiningYear(year);
 
         return year + "/T" + String.format("%03d", count + 1);
     }
@@ -28,7 +28,7 @@ public class BusinessIdGeneratorService {
     public String generateStudentCode() {
         int year = LocalDate.now().getYear();
 
-        long count = studentRepo.CountByJoiningYear(year);
+        long count = studentRepo.countByJoiningYear(year);
 
         return year + "/S" + String.format("%03d", count + 1);
     }

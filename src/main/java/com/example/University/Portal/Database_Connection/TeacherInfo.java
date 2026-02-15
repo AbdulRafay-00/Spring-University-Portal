@@ -14,7 +14,10 @@ public class TeacherInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Long techId;
+    private Long Id;
+
+    @Column(unique = true)
+    private String teacherId;
 
     @Column
     private String techName;
@@ -25,14 +28,13 @@ public class TeacherInfo {
     @Column
     private String techPhone;
 
-    @Column(unique = true)
-    private String teacherCode;
 
     @Column(unique = true)
     private String techEmail;
 
     @Column(nullable = false)
     private int joiningYear;
+    
     @OneToOne
     @JoinColumn(name = "user_Id", referencedColumnName = "userId")
     LoginInfo loginInfo;
@@ -84,11 +86,11 @@ public class TeacherInfo {
     }
 
     public void setTeacherCode(String code) {
-        this.teacherCode = code;
+        this.teacherId = code;
     }
 
     public String getTeacherCode() {
-        return teacherCode;
+        return teacherId;
     }
 
     public void setJoiningYear(int year){
