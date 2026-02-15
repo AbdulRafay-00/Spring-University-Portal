@@ -10,7 +10,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class TeacherInfo {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -25,55 +25,77 @@ public class TeacherInfo {
     @Column
     private String techPhone;
 
-    @Column(unique =  true)
-    private String techEmail;
-    @OneToOne
-    @JoinColumn(name = "user_Id" , referencedColumnName = "userId" )
-    LoginInfo loginInfo;
-// constructor
-    public TeacherInfo(){}
+    @Column(unique = true)
+    private String teacherCode;
 
-// getter/setter
+    @Column(unique = true)
+    private String techEmail;
+
+    @Column(nullable = false)
+    private int joiningYear;
+    @OneToOne
+    @JoinColumn(name = "user_Id", referencedColumnName = "userId")
+    LoginInfo loginInfo;
+
+    // constructor
+    public TeacherInfo() {
+    }
+
+    // getter/setter
 
     public String getTechName() {
-    return techName;
-}
+        return techName;
+    }
 
-public void setTechName(String techName) {
-    this.techName = techName;
-}
+    public void setTechName(String techName) {
+        this.techName = techName;
+    }
 
-public int getAge() {
-    return age;
-}
+    public int getAge() {
+        return age;
+    }
 
-public void setAge(int age) {
-    this.age = age;
-}
+    public void setAge(int age) {
+        this.age = age;
+    }
 
-public String getTechPhone() {
-    return techPhone;
-}
+    public String getTechPhone() {
+        return techPhone;
+    }
 
-public void setTechPhone(String techPhone) {
-    this.techPhone = techPhone;
-}
+    public void setTechPhone(String techPhone) {
+        this.techPhone = techPhone;
+    }
 
-public String getTechEmail() {
-    return techEmail;
-}
+    public String getTechEmail() {
+        return techEmail;
+    }
 
-public void setTechEmail(String techEmail) {
-    this.techEmail = techEmail;
-}
+    public void setTechEmail(String techEmail) {
+        this.techEmail = techEmail;
+    }
 
-public LoginInfo getLoginInfo() {
-    return loginInfo;
-}
+    public LoginInfo getLoginInfo() {
+        return loginInfo;
+    }
 
-public void setLoginInfo(LoginInfo loginInfo) {
-    this.loginInfo = loginInfo;
-}
+    public void setLoginInfo(LoginInfo loginInfo) {
+        this.loginInfo = loginInfo;
+    }
 
+    public void setTeacherCode(String code) {
+        this.teacherCode = code;
+    }
 
+    public String getTeacherCode() {
+        return teacherCode;
+    }
+
+    public void setJoiningYear(int year){
+        this.joiningYear = year;
+    }
+
+    public int getJoiningYear(){
+        return joiningYear;
+    }
 }

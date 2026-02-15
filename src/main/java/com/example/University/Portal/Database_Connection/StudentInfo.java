@@ -23,14 +23,20 @@ public class StudentInfo {
     @Column()
     private int age;
 
-    @Column()
+    @Column(unique = true)
     private String stuEmail;
 
     @Column()
     private String stuPhone;
 
+    @Column(unique = true)
+    private String studentCode;
+
+    @Column(nullable = false)
+    private int joiningYear;
+
     @OneToOne
-    @JoinColumn(name = "user_Id" ,referencedColumnName = "userId")
+    @JoinColumn(name = "user_Id", referencedColumnName = "userId")
     LoginInfo loginInfo;
 
     // constructor
@@ -71,13 +77,27 @@ public class StudentInfo {
         this.stuPhone = stuPhone;
     }
 
-
-    public void setloginInfo (LoginInfo loginInfo){
+    public void setloginInfo(LoginInfo loginInfo) {
         this.loginInfo = loginInfo;
     }
 
-    public LoginInfo getLoginInfo(){
+    public LoginInfo getLoginInfo() {
         return loginInfo;
     }
 
+    public void setStudentCode(String code) {
+        this.studentCode = code;
+    }
+
+    public String getStudentCode() {
+        return studentCode;
+    }
+
+    public void setJoiningYear(int year){
+        this.joiningYear = year;
+    }
+
+    public int getJoiningYear(){
+        return joiningYear;
+    }
 }

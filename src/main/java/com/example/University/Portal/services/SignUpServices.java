@@ -93,6 +93,8 @@
 
 package com.example.University.Portal.services;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -169,6 +171,7 @@ public class SignUpServices {
             studentInfo.setAge(s.getAge());
             studentInfo.setStuEmail(s.getEmail());
             studentInfo.setStuPhone(s.getStuPhone());
+            studentInfo.setJoiningYear(LocalDate.now().getYear());
 
             studentInfo.setloginInfo(loginInfo);
             loginInfo.setStudentInfo(studentInfo);
@@ -184,6 +187,8 @@ public class SignUpServices {
             teacherInfo.setAge(t.getAge());
             teacherInfo.setTechPhone(t.getTechPhone());
             teacherInfo.setTechEmail(t.getEmail());
+            teacherInfo.setJoiningYear(LocalDate.now().getYear());
+
 
             // Link teacher and login
             teacherInfo.setLoginInfo(loginInfo);
