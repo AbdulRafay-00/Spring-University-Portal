@@ -1,0 +1,32 @@
+package com.example.University.Portal.Database_Connection;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+
+@Entity
+@Table(name = "course_table")
+@Data
+@NoArgsConstructor
+@RequiredArgsConstructor
+public class CourseTable {
+
+    @Id
+    @Setter(AccessLevel.NONE)
+    @Getter(AccessLevel.NONE)
+    private long id;
+
+    @NonNull
+    private String courseId;
+
+    @NonNull
+    private String courseName;
+}
