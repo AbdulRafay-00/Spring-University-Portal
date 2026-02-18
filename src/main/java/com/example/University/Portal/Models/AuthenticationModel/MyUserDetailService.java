@@ -18,7 +18,7 @@ public class MyUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String userEmail)  {
         LoginInfo loginInfo = authRepository.findByEmail(userEmail)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + userEmail));
-                
+
         return new UserPrinciple(loginInfo);
     }
     
