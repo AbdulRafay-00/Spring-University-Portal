@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.University.Portal.Repository.AdminDetailRepository;
 import com.example.University.Portal.Repository.StuDetailRepository;
 import com.example.University.Portal.Repository.TeacherDetailRepository;
 
@@ -16,6 +17,9 @@ public class BusinessIdGeneratorService {
 
     @Autowired
     private StuDetailRepository studentRepo;
+
+    @Autowired
+    private AdminDetailRepository adminRepo;
 
     public String generateTeacherCode() {
         int year = LocalDate.now().getYear();
@@ -32,4 +36,14 @@ public class BusinessIdGeneratorService {
 
         return year + "/S" + String.format("%03d", count + 1);
     }
+
+    public String generateAdminCode() {
+        int year = LocalDate.now().getYear();
+
+        long count = adminRepo.countByJoiningYear(year);
+
+        return year + "/A" + String.format("%03d", count + 1);
+    }
+
+
 }
