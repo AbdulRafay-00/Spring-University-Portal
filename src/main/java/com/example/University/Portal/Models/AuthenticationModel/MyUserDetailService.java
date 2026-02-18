@@ -16,20 +16,10 @@ public class MyUserDetailService implements UserDetailsService {
     private AuthRepository authRepository;
     @Override
     public UserDetails loadUserByUsername(String userEmail)  {
-        authRepository.findByEmail(userEmail);
-        if(authRepository.findByEmail(userEmail).isEmpty()) {
-            throw new UsernameNotFoundException("User Not Found");
-        }else{
-            Optional<LoginInfo> loginInfo = authRepository.findByEmail(userEmail);
-            return new UserPrinciple(loginInfo)
-
-
-        }
-        
-        return null;
-    
-
-
+        LoginInfo loginInfo = authRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + userEmail));
+                
+        return new UserPrinciple(loginInfo);
     }
     
 }
