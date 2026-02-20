@@ -25,7 +25,7 @@ public class JwtServices {
     
             public String jwt_token_gen (String userName){
                 HashMap<String, Object> clai = new HashMap<>();
-    
+                clai.put(userName, clai);
                 return Jwts.builder()
                     .claims()
                     .add(clai)
