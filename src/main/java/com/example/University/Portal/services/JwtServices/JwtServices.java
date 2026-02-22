@@ -9,9 +9,11 @@ import java.util.function.Function;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.example.University.Portal.Database_Connection.LoginInfo;
+import com.example.University.Portal.ExtraServices.RoleClass;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -68,9 +70,23 @@ public class JwtServices {
 
             }
 
-
+// extraction of payload values
             public String extractUserName(String token){
                 return extractClaims(token, Claims::getSubject);
             }
-// validate token 
+            private boolean isTokenExpire(String token){
+                return extractClaims(token, Claims::getExpiration).before(new Date());
+            }
+            public String extractRole(String token){
+                return extractClaims(token, claims -> (String) claims.get("role"));
+            }
+            
+
+            // validate token
+            public boolean validateToken (String token,  UserDetails userDetails){
+                final String username = extractUserName(token);
+                return (username.equals(userDetails.getUsername()) && !isTokenExpire(token) );
+            }
+
+
 }
