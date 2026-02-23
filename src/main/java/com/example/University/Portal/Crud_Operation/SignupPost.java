@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.University.Portal.DB_Recorces.StudentStructure;
 import com.example.University.Portal.DB_Recorces.TeachetStructure;
-import com.example.University.Portal.ExtraServices.RoleClass;
 import com.example.University.Portal.services.SignUpServices;
 
 import org.springframework.beans.factory.annotation.Autowired;

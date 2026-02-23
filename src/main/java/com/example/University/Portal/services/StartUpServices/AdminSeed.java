@@ -1,15 +1,11 @@
 package com.example.University.Portal.services.StartUpServices;
 
-import java.sql.Date;
 import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import com.example.University.Portal.Database_Connection.AdminInfo;
 import com.example.University.Portal.Database_Connection.LoginInfo;
 import com.example.University.Portal.ExtraServices.BusinessIdGeneratorService;

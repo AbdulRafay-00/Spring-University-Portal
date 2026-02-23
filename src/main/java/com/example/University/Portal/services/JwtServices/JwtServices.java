@@ -3,18 +3,12 @@ package com.example.University.Portal.services.JwtServices;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.function.Function;
-
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import com.example.University.Portal.Database_Connection.LoginInfo;
-import com.example.University.Portal.ExtraServices.RoleClass;
-
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

@@ -1,7 +1,5 @@
 package com.example.University.Portal.DB_Recorces;
 
-import jakarta.persistence.Column;
-
 public class StudentStructure {
 
     private String email;
