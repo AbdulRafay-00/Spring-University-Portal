@@ -29,4 +29,10 @@ public class CourseTable {
 
     @NonNull
     private String courseName;
+
+    @NonNull
+    private String creditHour;
+
+    @NonNull
+    private String department;
 }
