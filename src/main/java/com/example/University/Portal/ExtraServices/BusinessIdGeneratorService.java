@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Repository.AdminDetailRepository;
+import com.example.University.Portal.Repository.CourseOfferingRepository;
 import com.example.University.Portal.Repository.StuDetailRepository;
 import com.example.University.Portal.Repository.TeacherDetailRepository;
 
@@ -20,6 +22,9 @@ public class BusinessIdGeneratorService {
 
     @Autowired
     private AdminDetailRepository adminRepo;
+
+    @Autowired
+    private CourseOfferingRepository courseOfferingRepo;
 
     public String generateTeacherCode() {
         int year = LocalDate.now().getYear();
@@ -43,6 +48,16 @@ public class BusinessIdGeneratorService {
         long count = adminRepo.countByJoiningYear(year);
 
         return year + "/A" + String.format("%03d", count + 1);
+    }
+
+
+    public String generateCourseOfferingCode(CourseOfferingTable courseOffering) {
+
+        int year = LocalDate.now().getYear();
+
+        long count = courseOfferingRepo.CountBySessionDate(year);
+
+        return courseOffering.getCourseTable().getCourseId() +"_"+ courseOffering.getSessionYear()+courseOffering.getSessionSemester() + String.format("%03d", count + 1);
     }
 
 

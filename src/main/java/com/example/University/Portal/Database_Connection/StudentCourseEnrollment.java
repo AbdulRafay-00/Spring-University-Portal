@@ -1,5 +1,6 @@
 package com.example.University.Portal.Database_Connection;
 
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.Key.StudentCourseEmbaded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;

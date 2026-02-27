@@ -1,4 +1,4 @@
-package com.example.University.Portal.Database_Connection;
+package com.example.University.Portal.Database_Connection.CourseInfo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
