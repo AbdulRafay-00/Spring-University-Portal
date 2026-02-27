@@ -29,8 +29,7 @@ public class CourseOfferingTable {
 
     @NonNull
     @ManyToOne
-    @MapsId("teacherId")
-    @JoinColumn(name = "teacher_Id")
+    @JoinColumn(name = "teacher_Id", referencedColumnName = "teacherId")
     private TeacherInfo teacherInfo;
 
     @NonNull
@@ -42,8 +41,7 @@ public class CourseOfferingTable {
 
     @NonNull
     @ManyToOne
-    @MapsId("courseId")
-    @JoinColumn(name = "course_Id")
+    @JoinColumn(name = "course_Id", referencedColumnName = "courseId")
     private CourseTable courseTable;
 
 
