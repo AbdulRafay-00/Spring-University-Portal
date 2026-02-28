@@ -55,9 +55,9 @@ public class BusinessIdGeneratorService {
 
         int year = LocalDate.now().getYear();
 
-        long count = courseOfferingRepo.CountBySessionDate(year);
+        long count = courseOfferingRepo.countBySessionYear(year);
 
-        return courseOffering.getCourseTable().getCourseId() +"_"+ courseOffering.getSessionYear()+courseOffering.getSessionSemester() + String.format("%03d", count + 1);
+        return courseOffering.getCourseId().getCourseId() +"_"+ courseOffering.getSessionYear()+courseOffering.getSessionSemester() ;
     }
 
 

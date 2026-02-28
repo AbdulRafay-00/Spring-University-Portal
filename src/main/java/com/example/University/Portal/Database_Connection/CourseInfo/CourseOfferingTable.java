@@ -4,7 +4,11 @@ import java.sql.Date;
 
 import com.example.University.Portal.Database_Connection.TeacherInfo;
 
+import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -21,16 +25,18 @@ import lombok.RequiredArgsConstructor;
 public class CourseOfferingTable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NonNull
+    @Column(unique = true)
     private String courseOfferingId;
 
 
     @NonNull
     @ManyToOne
     @JoinColumn(name = "teacher_Id", referencedColumnName = "teacherId")
-    private TeacherInfo teacherInfo;
+    private TeacherInfo teacherId;
 
     @NonNull
     private int sessionYear;
@@ -42,7 +48,7 @@ public class CourseOfferingTable {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "course_Id", referencedColumnName = "courseId")
-    private CourseTable courseTable;
+    private CourseTable courseId;
 
 
 }

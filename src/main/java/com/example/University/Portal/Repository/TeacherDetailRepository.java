@@ -11,6 +11,6 @@ import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 @Repository
 public interface TeacherDetailRepository extends JpaRepository<TeacherInfo, Long> {
     long countByJoiningYear(int joiningYear);
-    Optional<CourseTable> findBytecherId(String techerId);
+    Optional<TeacherInfo> findByTeacherId(String teacherId);
 
 }

@@ -1,11 +1,17 @@
 package com.example.University.Portal.Database_Connection;
 
+import java.util.List;
+
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -38,6 +44,12 @@ public class TeacherInfo {
     @OneToOne
     @JoinColumn(name = "user_Id", referencedColumnName = "userId")
     LoginInfo loginInfo;
+
+
+
+// in mapped by give the name of the variable in courseoffering table that is referencing teacher info  like private TeacherInfo teacherId; in course offering table
+//     @OneToMany(mappedBy = "teacherId")
+// private List<CourseOfferingTable> courseOfferings;
 
     // constructor
     public TeacherInfo() {
@@ -100,4 +112,12 @@ public class TeacherInfo {
     public int getJoiningYear(){
         return joiningYear;
     }
+
+//     public List<CourseOfferingTable> getCourseOfferings() {
+//     return courseOfferings;
+// }
+
+// public void setCourseOfferings(List<CourseOfferingTable> courseOfferings) {
+//     this.courseOfferings = courseOfferings;
+// }
 }

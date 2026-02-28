@@ -1,7 +1,13 @@
 package com.example.University.Portal.services.CourseServices;
 
+import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.University.Portal.Database_Connection.TeacherInfo;
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseOfferingRequest;
 import com.example.University.Portal.ExtraServices.BusinessIdGeneratorService;
 import com.example.University.Portal.Repository.CourseDetailRepository;
@@ -12,15 +18,41 @@ import com.example.University.Portal.Repository.TeacherDetailRepository;
 @Service
 public class TechCourseOffering {
 
+    @Autowired
     private  BusinessIdGeneratorService businessIdGeneratorService;
+    @Autowired
     private TeacherDetailRepository teacherDetailRepository;
+    @Autowired
     private CourseOfferingRepository courseOfferingRepository;
+    @Autowired
     private CourseDetailRepository courseDetailRepository;
+
+    private String offeringId;
     
     public String teacherCourseAssign(DtoCourseOfferingRequest courseOfferingRequest) {
-
-        if (courseDetailRepository.findByCourseId(courseOfferingRequest.getCourseId()).isPresent()) {
+        
+        CourseTable course = courseDetailRepository.findByCourseId(courseOfferingRequest.getCourseId())
+        .orElseThrow(() -> new RuntimeException("Course not found with ID: " + courseOfferingRequest.getCourseId()));
+        
+        
+        TeacherInfo teacher = teacherDetailRepository.findByTeacherId(courseOfferingRequest.getTeacherId())
+        .orElseThrow(() -> new RuntimeException("Teacher not found with ID: " + courseOfferingRequest.getTeacherId()));
+        
+        
+        if (courseDetailRepository.findByCourseId(courseOfferingRequest.getCourseId()).isPresent()  &&
+        teacherDetailRepository.findByTeacherId(courseOfferingRequest.getTeacherId()).isPresent()) {
             
+            CourseOfferingTable courseOffering = new CourseOfferingTable();
+            offeringId= businessIdGeneratorService.generateCourseOfferingCode(courseOffering);
+            courseOfferingRepository.findByCourseOfferingId(offeringId)
+            .orElseThrow(() -> new RuntimeException("Course Offering already created " ));
+
+                courseOffering.setCourseId(course);
+                courseOffering.setTeacherId(teacher);
+                courseOffering.setSessionYear(LocalDate.now().getYear());
+                courseOffering.setSessionSemester(courseOfferingRequest.getSessionSemester());
+                courseOffering.setCourseOfferingId(businessIdGeneratorService.generateCourseOfferingCode(courseOffering));
+                courseOfferingRepository.save(courseOffering);
         }
 
 

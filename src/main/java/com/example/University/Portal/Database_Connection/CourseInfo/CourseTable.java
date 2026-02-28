@@ -1,7 +1,10 @@
 package com.example.University.Portal.Database_Connection.CourseInfo;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Data;
@@ -35,4 +38,8 @@ public class CourseTable {
 
     @NonNull
     private String department;
+
+    // in mapped by give the name of the variable in courseoffering table that is referencing teacher info  like private TeacherInfo teacherId; in course offering table
+    // @OneToMany(mappedBy = "courseId")
+    // private List<CourseOfferingTable> courseOfferings;
 }
