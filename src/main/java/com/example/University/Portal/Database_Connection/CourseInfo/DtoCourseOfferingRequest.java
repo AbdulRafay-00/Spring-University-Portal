@@ -11,4 +11,5 @@ public class DtoCourseOfferingRequest {
     private  String courseId;
     private String sessionSemester;
     private String teacherId;
+    private String section;
 }

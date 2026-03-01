@@ -9,7 +9,8 @@ import com.example.University.Portal.Database_Connection.TeacherInfo;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseOfferingRequest;
-import com.example.University.Portal.Exceptions.UserNotFound;
+import com.example.University.Portal.Exceptions.ExceptionType.UserAlreadyExist;
+import com.example.University.Portal.Exceptions.ExceptionType.UserNotFound;
 import com.example.University.Portal.ExtraServices.BusinessIdGeneratorService;
 import com.example.University.Portal.Repository.CourseDetailRepository;
 import com.example.University.Portal.Repository.CourseOfferingRepository;
@@ -48,11 +49,12 @@ public class TechCourseOffering {
             courseOffering.setTeacherId(teacher);
             courseOffering.setSessionYear(LocalDate.now().getYear());
             courseOffering.setSessionSemester(courseOfferingRequest.getSessionSemester());
+            courseOffering.setSection(courseOfferingRequest.getSection());
             courseOffering.setCourseOfferingId(businessIdGeneratorService.generateCourseOfferingCode(courseOffering));
             
             courseOfferingRepository.findByCourseOfferingId(courseOffering.getCourseOfferingId())
             .ifPresent(existing -> {
-                throw new RuntimeException("Course Offering already created with ID: " + existing.getCourseOfferingId());
+                throw new UserAlreadyExist("Course Offering already created with ID: " + existing.getCourseOfferingId());
             });
 
                 courseOfferingRepository.save(courseOffering);

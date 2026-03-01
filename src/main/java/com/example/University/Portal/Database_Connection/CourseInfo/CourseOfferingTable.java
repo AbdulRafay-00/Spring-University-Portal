@@ -13,6 +13,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -49,6 +51,10 @@ public class CourseOfferingTable {
     @ManyToOne
     @JoinColumn(name = "course_Id", referencedColumnName = "courseId")
     private CourseTable course;
+
+    @NotNull
+    @NotBlank(message = "Section cannot be blank")
+    private String section;
 
 
 }
