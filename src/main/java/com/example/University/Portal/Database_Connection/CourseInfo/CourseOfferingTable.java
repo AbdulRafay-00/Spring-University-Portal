@@ -48,7 +48,7 @@ public class CourseOfferingTable {
     @NonNull
     @ManyToOne
     @JoinColumn(name = "course_Id", referencedColumnName = "courseId")
-    private CourseTable courseId;
+    private CourseTable course;
 
 
 }
