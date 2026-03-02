@@ -53,7 +53,6 @@ public class CourseOfferingTable {
     private CourseTable course;
 
     @NotNull
-    @NotBlank(message = "Section cannot be blank")
     private String section;
 
 

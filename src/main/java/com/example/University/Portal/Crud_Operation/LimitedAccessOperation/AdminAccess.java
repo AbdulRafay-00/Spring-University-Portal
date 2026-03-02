@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseOfferingRequest;
 import com.example.University.Portal.services.CourseServices.TechCourseOffering;
 
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +21,7 @@ public class AdminAccess {
 
     // course offering
     @PostMapping("/course/offering")
-    public String CourseOffering(@RequestBody DtoCourseOfferingRequest courseOfferingRequest) {
+    public String CourseOffering(@Valid  @RequestBody DtoCourseOfferingRequest courseOfferingRequest) {
         // TODO: process POST request
 
         return techCourseOffering.teacherCourseAssign(courseOfferingRequest);
