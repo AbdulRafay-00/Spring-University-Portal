@@ -1,6 +1,7 @@
 package com.example.University.Portal.Database_Connection.StudentCourseEnroll;
 
 import com.example.University.Portal.Database_Connection.StudentInfo;
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.Key.StudentCourseEmbaded;
 import jakarta.persistence.EmbeddedId;
@@ -29,17 +30,27 @@ public class StudentCourseEnrollment {
     @NonNull
     @ManyToOne
     @MapsId("studentId")
-    @JoinColumn(name = "student_id")
     @Getter(AccessLevel.NONE)
+    @JoinColumn(name = "student_id")
     private StudentInfo studentInfo;
 
     @NonNull
     @ManyToOne
-    @MapsId("courseId")
-    @JoinColumn(name = "course_id")
+    @MapsId("courseOfferingId")
     @Getter(AccessLevel.NONE)
-    private CourseTable courseTable;
+    @JoinColumn(name = "course_offering_id")
+    private CourseOfferingTable courseTable;
 
     @NonNull
     private int year;
+    
+    @NonNull
+    private double marks;
+    
+    @NonNull
+    private String grade;
+
+    @NonNull
+    private double gpa;
+
 }
