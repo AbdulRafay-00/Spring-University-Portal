@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.University.Portal.Database_Connection.LoginInfo;
-import com.example.University.Portal.services.LoginServices;
+import com.example.University.Portal.services.LoginSignUpService.LoginServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

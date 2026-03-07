@@ -40,6 +40,10 @@ public class StudentInfo {
     @JoinColumn(name = "user_Id", referencedColumnName = "userId")
     LoginInfo loginInfo;
 
+    private int currentYear;
+
+    private int currentSemester;
+
     // constructor
     public StudentInfo() {
     }
@@ -100,5 +104,21 @@ public class StudentInfo {
 
     public int getJoiningYear(){
         return joiningYear;
+    }
+
+    public void setCurrentYear(int year) {
+        this.currentYear = year;
+    }
+
+    public int  getCurrentYear() {
+        return currentYear;
+    }
+
+    public void setCurrentSemester(int semester) {
+        this.currentSemester = semester;
+    }
+
+    public int getCurrentSemester() {
+        return currentSemester;
     }
 }

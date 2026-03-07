@@ -91,7 +91,7 @@
 
 
 
-package com.example.University.Portal.services;
+package com.example.University.Portal.services.LoginSignUpService;
 
 import java.time.LocalDate;
 
@@ -177,6 +177,8 @@ public class SignUpServices {
             studentInfo.setStuPhone(s.getStuPhone());
             studentInfo.setJoiningYear(LocalDate.now().getYear());
             studentInfo.setStudentCode(businessId.generateStudentCode());
+            studentInfo.setCurrentYear(1);
+            studentInfo.setCurrentSemester(1);
 
             studentInfo.setloginInfo(loginInfo);
             loginInfo.setStudentInfo(studentInfo);
