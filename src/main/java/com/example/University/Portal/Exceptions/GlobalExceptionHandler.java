@@ -1,8 +1,6 @@
 package com.example.University.Portal.Exceptions;
 
 import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -29,7 +27,7 @@ public class GlobalExceptionHandler {
                 .body(ex.getMessage());
     }
 
-
+    
 // bad request send
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity <HashMap<String, String>> handleMethodArgumentNotValidExException(MethodArgumentNotValidException ex){
