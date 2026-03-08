@@ -44,6 +44,8 @@ public class StudentInfo {
 
     private int currentSemester;
 
+    private String Section;
+
     // constructor
     public StudentInfo() {
     }
@@ -120,5 +122,13 @@ public class StudentInfo {
 
     public int getCurrentSemester() {
         return currentSemester;
+    }
+    
+    public void setSection(String section) {
+        this.Section = section;
+    }
+
+    public String getSection() {
+        return Section;
     }
 }

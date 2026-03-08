@@ -1,6 +1,8 @@
 package com.example.University.Portal.Database_Connection.CourseInfo;
 
 import com.example.University.Portal.Database_Connection.TeacherInfo;
+import com.example.University.Portal.Database_Connection.AcademicCalender.AcademicTimeTable;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -48,6 +50,10 @@ public class CourseOfferingTable {
 
     @NotNull
     private String section;
+
+    @ManyToOne
+    @JoinColumn(name = "session_id", referencedColumnName = "sessionId")
+    AcademicTimeTable academicTimeTable;
 
 
 }

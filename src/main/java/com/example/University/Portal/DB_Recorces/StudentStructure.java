@@ -13,15 +13,18 @@ public class StudentStructure {
 
     private String stuPhone;
 
+    private String section;
+
 
 // constructor
     public StudentStructure() {}
-    public StudentStructure(String email, String password, String stuName, int age, String stuEmail, String stuPhone) {
+    public StudentStructure(String email, String password, String stuName, int age, String stuEmail, String stuPhone, String section) {
         this.email = email;
         this.password = password;
         this.stuName = stuName;
         this.age = age;
         this.stuPhone = stuPhone;
+        this.section = section;
     }
 
     public String getEmail() {
@@ -64,5 +67,12 @@ public class StudentStructure {
         this.stuPhone = stuPhone;
     }
 
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
 
 }

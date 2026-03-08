@@ -179,6 +179,7 @@ public class SignUpServices {
             studentInfo.setStudentCode(businessId.generateStudentCode());
             studentInfo.setCurrentYear(1);
             studentInfo.setCurrentSemester(1);
+            studentInfo.setSection("A");
 
             studentInfo.setloginInfo(loginInfo);
             loginInfo.setStudentInfo(studentInfo);

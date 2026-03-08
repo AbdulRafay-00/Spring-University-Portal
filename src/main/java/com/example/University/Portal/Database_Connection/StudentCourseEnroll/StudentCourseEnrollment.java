@@ -1,5 +1,7 @@
 package com.example.University.Portal.Database_Connection.StudentCourseEnroll;
 
+import java.util.List;
+
 import com.example.University.Portal.Database_Connection.StudentInfo;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
@@ -40,9 +42,6 @@ public class StudentCourseEnrollment {
     @Getter(AccessLevel.NONE)
     @JoinColumn(name = "course_offering_id")
     private CourseOfferingTable courseTable;
-
-    @NonNull
-    private int year;
     
     @NonNull
     private double marks;

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.University.Portal.Database_Connection.AcademicCalender.AcadamicTimeTableDTO;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Repository.AdminDetailRepository;
 import com.example.University.Portal.Repository.StuDetailRepository;
@@ -53,6 +54,10 @@ public class BusinessIdGeneratorService {
         return courseOffering.getCourse().getCourseId() +"_"
         + courseOffering.getSessionYear()+courseOffering.getSessionSemester()
         + "_" + courseOffering.getSection();
+    }
+
+    public String generateAcademicSessionId(AcadamicTimeTableDTO academicTimeTable) {
+        return academicTimeTable.getYear() + "_" + academicTimeTable.getSemester();
     }
 
 
