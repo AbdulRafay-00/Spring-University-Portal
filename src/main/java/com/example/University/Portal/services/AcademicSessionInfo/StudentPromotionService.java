@@ -21,10 +21,10 @@ public class StudentPromotionService {
     @Autowired
     StuDetailRepository stuDetailRepository;
 
-    private StudentCourseEnrollmentRepository enrollmentRepository;
-    private StuDetailRepository studentRepository;
-    private CourseOfferingRepository courseOfferingRepository;
-    private CourseDetailRepository curriculumRepository;
+    // private StudentCourseEnrollmentRepository enrollmentRepository;
+    // private StuDetailRepository studentRepository;
+    // private CourseOfferingRepository courseOfferingRepository;
+    // private CourseDetailRepository curriculumRepository;
 
 public void promoteStudentsession(StudentInfo student) {
     int semester = student.getCurrentSemester();

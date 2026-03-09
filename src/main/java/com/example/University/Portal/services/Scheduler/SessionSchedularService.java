@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
 
 import com.example.University.Portal.Database_Connection.StudentInfo;
 import com.example.University.Portal.Database_Connection.AcademicCalender.AcademicTimeTable;
@@ -15,6 +16,8 @@ import com.example.University.Portal.Repository.AcademicTimeTableRepository;
 import com.example.University.Portal.services.AcademicSessionInfo.StudentPromotionService;
 import com.example.University.Portal.services.StudentCourseEnrollmentService.StudentCourseEnrollmentService;
 
+
+@Service
 public class SessionSchedularService {
 
     @Autowired
@@ -24,7 +27,7 @@ public class SessionSchedularService {
     @Autowired
     StudentCourseEnrollmentService enrollmentService;
 
-    @Scheduled(cron = "0 0 0 * * ?")
+      @Scheduled(cron = "0 0 0 * * ?")
 public void checkSessionEnd() {
 
     LocalDate today = LocalDate.now();
@@ -43,8 +46,9 @@ public void checkSessionEnd() {
 
         academicSessionRepository.save(session);
     }
-
+StudentInfo student = new StudentInfo();
     studentPromotionService.autoPromoteStudents();
+    // studentPromotionService.promoteStudentsession( student);
     enrollmentService.asignCoursesToPromotedStudents(today.getYear(), sessionHolder);
 }
 }

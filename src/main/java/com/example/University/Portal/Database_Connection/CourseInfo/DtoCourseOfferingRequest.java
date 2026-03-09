@@ -1,6 +1,7 @@
 package com.example.University.Portal.Database_Connection.CourseInfo;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,4 +18,7 @@ public class DtoCourseOfferingRequest {
     private String teacherId;
     @NotBlank(message = "Section is required")
     private String section;
+
+    @NotBlank(message = "Academic session id is required")
+    private String academicSessionId;
 }

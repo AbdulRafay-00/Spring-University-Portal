@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.University.Portal.Database_Connection.TeacherInfo;
+import com.example.University.Portal.Database_Connection.AcademicCalender.AcademicTimeTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseOfferingRequest;
 import com.example.University.Portal.Exceptions.ExceptionType.UserAlreadyExist;
 import com.example.University.Portal.Exceptions.ExceptionType.UserNotFound;
 import com.example.University.Portal.ExtraServices.BusinessIdGeneratorService;
+import com.example.University.Portal.Repository.AcademicTimeTableRepository;
 import com.example.University.Portal.Repository.CourseDetailRepository;
 import com.example.University.Portal.Repository.CourseOfferingRepository;
 import com.example.University.Portal.Repository.TeacherDetailRepository;
@@ -28,7 +30,8 @@ public class TechCourseOffering {
     private CourseOfferingRepository courseOfferingRepository;
     @Autowired
     private CourseDetailRepository courseDetailRepository;
-
+    @Autowired
+    private AcademicTimeTableRepository academicTimeTableRepository;
     
     public String teacherCourseAssign(DtoCourseOfferingRequest courseOfferingRequest) {
         
@@ -38,6 +41,9 @@ public class TechCourseOffering {
         
         TeacherInfo teacher = teacherDetailRepository.findByTeacherId(courseOfferingRequest.getTeacherId())
         .orElseThrow(() -> new UserNotFound("Teacher not found with ID: " + courseOfferingRequest.getTeacherId()));
+
+        AcademicTimeTable academicSession = academicTimeTableRepository.findBySessionId(courseOfferingRequest.getAcademicSessionId())
+        .orElseThrow(() -> new UserNotFound("Academic session not found with ID: " + courseOfferingRequest.getAcademicSessionId()));
         
         
         if (courseDetailRepository.findByCourseId(courseOfferingRequest.getCourseId()).isPresent()  &&
@@ -51,6 +57,7 @@ public class TechCourseOffering {
             courseOffering.setSessionSemester(courseOfferingRequest.getSessionSemester());
             courseOffering.setSection(courseOfferingRequest.getSection());
             courseOffering.setCourseOfferingId(businessIdGeneratorService.generateCourseOfferingCode(courseOffering));
+            courseOffering.setAcademicTimeTable(academicSession);
             
             courseOfferingRepository.findByCourseOfferingId(courseOffering.getCourseOfferingId())
             .ifPresent(existing -> {

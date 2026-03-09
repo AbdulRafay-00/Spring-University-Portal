@@ -36,6 +36,9 @@ public class CourseTable {
     @NonNull
     private String department;
 
+    @NonNull
+    private int semester;
+
     // in mapped by give the name of the variable in courseoffering table that is referencing teacher info  like private TeacherInfo teacherId; in course offering table
     // @OneToMany(mappedBy = "courseId")
     // private List<CourseOfferingTable> courseOfferings;
