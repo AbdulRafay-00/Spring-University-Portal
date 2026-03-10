@@ -16,6 +16,8 @@ import com.example.University.Portal.Repository.AcademicTimeTableRepository;
 import com.example.University.Portal.services.AcademicSessionInfo.StudentPromotionService;
 import com.example.University.Portal.services.StudentCourseEnrollmentService.StudentCourseEnrollmentService;
 
+import jakarta.transaction.Transactional;
+
 
 @Service
 public class SessionSchedularService {
@@ -27,28 +29,36 @@ public class SessionSchedularService {
     @Autowired
     StudentCourseEnrollmentService enrollmentService;
 
-      @Scheduled(cron = "0 0 0 * * ?")
+@Scheduled(cron = "*/25 * * * * ?")
+@Transactional
 public void checkSessionEnd() {
-
     LocalDate today = LocalDate.now();
+    System.out.println("Scheduler running: " + today);
     List<AcademicTimeTable> sessions =
         academicSessionRepository
-        .findByEndDateBeforeAndStatus(
+        .findByEndDateBeforeOrEqualAndStatus(
             today,
             AcademicYearStatusenum.ACTIVE
         );
         String sessionHolder ="";
 
     for (AcademicTimeTable session : sessions) {
-
         session.setStatus(AcademicYearStatusenum.COMPLETED);
         sessionHolder = session.getSemester();
 
         academicSessionRepository.save(session);
     }
+
+    System.out.println("Sessions found: " + sessions.size());
+
 StudentInfo student = new StudentInfo();
     studentPromotionService.autoPromoteStudents();
     // studentPromotionService.promoteStudentsession( student);
+
+
+    System.out.println("Students promoted for session: " + sessionHolder);
+    System.out.println(today.getYear());
+
     enrollmentService.asignCoursesToPromotedStudents(today.getYear(), sessionHolder);
 }
 }

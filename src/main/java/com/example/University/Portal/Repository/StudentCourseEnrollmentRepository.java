@@ -36,13 +36,13 @@ public interface StudentCourseEnrollmentRepository
     @Modifying
     @Transactional
     @Query(value = """
-            INSERT INTO StudentCourseEnrollment (student_id, course_id, course_offering_id, marks, grade, gpa)
-            SELECT s.student_id, c.course_id, o.course_offering_id, '', 0.0, 0.0
+            INSERT INTO student_enrollment (gpa, marks, student_id, grade, course_offering_id)
+            SELECT 0.0, 0.0, s.student_id, '', o.course_offering_id
             FROM student_info s
             JOIN course_table c ON s.current_semester = c.semester
             JOIN course_offering_table o ON c.course_id = o.course_id
-            WHERE o.year = :year AND o.session = :session
+            WHERE o.session_year = :year AND o.session_semester = :session
             """, nativeQuery = true)
-    public void insertEnrollmentsForSession(@Param("year") int year, @Param("session") String session);
+    public void insertEnrollmentsForSession(@Param("year") int sessionYear, @Param("session") String session);
 
 }

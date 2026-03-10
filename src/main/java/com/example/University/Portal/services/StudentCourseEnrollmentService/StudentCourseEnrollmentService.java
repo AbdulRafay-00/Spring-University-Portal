@@ -23,7 +23,7 @@ public class StudentCourseEnrollmentService {
         }
 
         // enrollmentRepository.findDistinctStudentsBySession(year, setSession);
-        enrollmentRepository.insertEnrollmentsForSession(year, setSession);
+        enrollmentRepository.insertEnrollmentsForSession(2026, setSession);
     }
 
     // mujha courseid chaia us ka semester chaia sahi ha
