@@ -29,7 +29,7 @@ public class SessionSchedularService {
     @Autowired
     StudentCourseEnrollmentService enrollmentService;
 
-@Scheduled(cron = "*/25 * * * * ?")
+@Scheduled(cron = "0 0 0 * * ?")
 @Transactional
 public void checkSessionEnd() {
     LocalDate today = LocalDate.now();

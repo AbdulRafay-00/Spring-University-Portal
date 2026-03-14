@@ -24,8 +24,8 @@ public interface StuDetailRepository extends JpaRepository<StudentInfo, Long> {
 @Modifying
 @Transactional
 @Query(value = "UPDATE student_info s " +
-               "SET s.current_semester = s.current_semester + 1, " +
-               "    s.current_year = CASE WHEN MOD(s.current_semester, 2) = 0 THEN s.current_year + 1 ELSE s.current_year END " +
+               "SET s.current_year = CASE WHEN MOD(s.current_semester + 1, 2) = 0 THEN s.current_year ELSE s.current_year + 1 END, " +
+               "    s.current_semester = s.current_semester + 1 " +
                "WHERE s.current_semester < 8",
        nativeQuery = true)
 int promoteAllStudents();

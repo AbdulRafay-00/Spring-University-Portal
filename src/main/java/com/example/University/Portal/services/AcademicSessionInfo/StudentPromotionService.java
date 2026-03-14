@@ -21,25 +21,28 @@ public class StudentPromotionService {
     @Autowired
     StuDetailRepository stuDetailRepository;
 
+// manual Approatch to update student semester and year
+
+
     // private StudentCourseEnrollmentRepository enrollmentRepository;
     // private StuDetailRepository studentRepository;
     // private CourseOfferingRepository courseOfferingRepository;
     // private CourseDetailRepository curriculumRepository;
 
-public void promoteStudentsession(StudentInfo student) {
-    int semester = student.getCurrentSemester();
-    int year = student.getCurrentYear();
+// public void promoteStudentsession(StudentInfo student) {
+//     int semester = student.getCurrentSemester();
+//     int year = student.getCurrentYear();
 
-    // assume 2 semesters per year
-    if (semester % 2 == 0) {
-        student.setCurrentSemester(semester + 1);
-        student.setCurrentYear(year + 1);
-    } else {
-        student.setCurrentSemester(semester + 1);
-    }
+//     // assume 2 semesters per year
+//     if (semester % 2 == 0) {
+//         student.setCurrentSemester(semester + 1);
+//         student.setCurrentYear(year + 1);
+//     } else {
+//         student.setCurrentSemester(semester + 1);
+//     }
 
-    stuDetailRepository.save(student);
-}
+//     stuDetailRepository.save(student);
+// }
 
 
 
