@@ -1,6 +1,8 @@
 package com.example.University.Portal.Database_Connection.CourseInfo;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
@@ -22,6 +24,7 @@ public class CourseTable {
     @Id
     @Setter(AccessLevel.NONE)
     @Getter(AccessLevel.NONE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NonNull

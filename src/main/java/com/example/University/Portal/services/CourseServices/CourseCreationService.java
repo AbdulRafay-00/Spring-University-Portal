@@ -1,9 +1,12 @@
+package com.example.University.Portal.services.CourseServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseCreation;
+import com.example.University.Portal.Exceptions.ExceptionType.UserAlreadyExist;
 import com.example.University.Portal.Repository.CourseDetailRepository;
 
-package com.example.University.Portal.services.CourseServices;
 
 
 @Service
@@ -13,7 +16,7 @@ public class CourseCreationService {
     CourseDetailRepository courseDetailRepository;
 
 
-    public void createCourse(DtoCourseCreation courseCreation) {
+    public String  createCourse(DtoCourseCreation courseCreation) {
 
         courseDetailRepository.findByCourseId(courseCreation.getCourseId())
             .ifPresentOrElse(existingCourse -> {
@@ -24,8 +27,9 @@ public class CourseCreationService {
                 newCourse.setCourseId(courseCreation.getCourseId());
                 newCourse.setDepartment(courseCreation.getDepartment());
                 newCourse.setCreditHour(courseCreation.getCreditHour());
-                
+                newCourse.setSemester(courseCreation.getSemester());
                 courseDetailRepository.save(newCourse);
             });
+        return "Course created successfully";
     }
 }

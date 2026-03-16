@@ -3,8 +3,10 @@ package com.example.University.Portal.Crud_Operation.LimitedAccessOperation;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.University.Portal.Database_Connection.AcademicCalender.AcadamicTimeTableDTO;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseCreation;
 import com.example.University.Portal.Database_Connection.CourseInfo.DtoCourseOfferingRequest;
+import com.example.University.Portal.services.AcademicSessionInfo.AcademicSessionCreationService;
 import com.example.University.Portal.services.CourseServices.CourseCreationService;
 import com.example.University.Portal.services.CourseServices.TechCourseOffering;
 
@@ -20,15 +22,16 @@ public class AdminAccess {
 
     @Autowired
     private TechCourseOffering techCourseOffering;
+    @Autowired
     private CourseCreationService courseCreationService;
+    @Autowired
+    private AcademicSessionCreationService academicSessionCreationService;
 //course creation
-    @PostMapping("/course/create")
+    @PostMapping("/course/creation")
     public String CourseCreation(@Valid @RequestBody DtoCourseCreation courseCreation) {
 
         return courseCreationService.createCourse(courseCreation);
     }
-
-
 
 
     // course offering
@@ -40,4 +43,10 @@ public class AdminAccess {
     }
 
 
+// Acadamic session creation
+    @PostMapping("/academic/session/create")
+    public String AcademicSessionCreation(@Valid @RequestBody AcadamicTimeTableDTO academicTimeTable) {
+        return academicSessionCreationService.addAcademicSession(academicTimeTable);
+    }
+    
 }

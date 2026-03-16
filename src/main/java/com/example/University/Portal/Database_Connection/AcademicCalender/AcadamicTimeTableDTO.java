@@ -13,11 +13,9 @@ public class AcadamicTimeTableDTO {
     
     private int year;
 
-    private String semester; // "SPRING" or "FALL"
+    private String session; // "SPRING" or "FALL"
 
     private LocalDate startDate;
 
     private LocalDate endDate;
-
-    private String sessionId;
 }

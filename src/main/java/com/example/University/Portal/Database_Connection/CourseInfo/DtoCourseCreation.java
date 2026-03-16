@@ -1,21 +1,18 @@
 package com.example.University.Portal.Database_Connection.CourseInfo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DtoCourseCreation {
     private String courseName;
     private String courseId;
     private String Department;
-    private int creditHour;
+    private String creditHour;
+    private int semester;
 
-    public DtoCourseCreation() {
-    }
-
-    public DtoCourseCreation(String courseName, String courseCode, String Department, int creditHour) {
-        this.courseName = courseName;
-        this.courseId = courseCode;
-        this.Department = Department;
-        this.creditHour = credits;
-    }
 
 }

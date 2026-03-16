@@ -57,7 +57,7 @@ public class BusinessIdGeneratorService {
     }
 
     public String generateAcademicSessionId(AcadamicTimeTableDTO academicTimeTable) {
-        return academicTimeTable.getYear() + "_" + academicTimeTable.getSemester();
+        return academicTimeTable.getYear() + "_" + academicTimeTable.getSession();
     }
 
 
