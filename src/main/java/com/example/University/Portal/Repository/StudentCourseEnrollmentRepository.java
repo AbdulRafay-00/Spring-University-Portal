@@ -37,7 +37,7 @@ public interface StudentCourseEnrollmentRepository
     @Transactional
     @Query(value = """
             INSERT INTO student_enrollment (gpa, marks, student_id, grade, course_offering_id)
-            SELECT 0.0, 0.0, s.student_id, '', o.course_offering_id
+            SELECT 0.0, null, s.student_id, '', o.course_offering_id
             FROM student_info s
             JOIN course_table c ON s.current_semester = c.semester
             JOIN course_offering_table o ON c.course_id = o.course_id

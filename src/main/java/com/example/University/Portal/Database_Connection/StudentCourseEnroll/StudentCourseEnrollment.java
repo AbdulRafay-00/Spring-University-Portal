@@ -1,10 +1,8 @@
 package com.example.University.Portal.Database_Connection.StudentCourseEnroll;
 
-import java.util.List;
 
 import com.example.University.Portal.Database_Connection.StudentInfo;
 import com.example.University.Portal.Database_Connection.CourseInfo.CourseOfferingTable;
-import com.example.University.Portal.Database_Connection.CourseInfo.CourseTable;
 import com.example.University.Portal.Database_Connection.Key.StudentCourseEmbaded;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -43,12 +41,13 @@ public class StudentCourseEnrollment {
     @JoinColumn(name = "course_offering_id")
     private CourseOfferingTable courseTable;
     
-    @NonNull
+
     private double marks;
     
     @NonNull
     private String grade;
-
+    
+    
     @NonNull
     private double gpa;
 
