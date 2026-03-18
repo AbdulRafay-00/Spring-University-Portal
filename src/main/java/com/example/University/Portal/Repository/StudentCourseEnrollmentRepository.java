@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.example.University.Portal.Database_Connection.StudentInfo;
+import com.example.University.Portal.Database_Connection.KafkaResultObj.ResultAiResDto;
 import com.example.University.Portal.Database_Connection.Key.StudentCourseEmbaded;
 import com.example.University.Portal.Database_Connection.StudentCourseEnroll.StudentCourseEnrollment;
 
@@ -44,5 +45,17 @@ public interface StudentCourseEnrollmentRepository
             WHERE o.session_year = :year AND o.session_semester = :session
             """, nativeQuery = true)
     public void insertEnrollmentsForSession(@Param("year") int sessionYear, @Param("session") String session);
+
+
+           @Query(value = """
+            SELECT c.course_name AS courseName, e.marks AS marks
+            FROM student_enrollment e
+            JOIN course_offering_table co
+                ON e.course_offering_id = co.course_offering_id
+            JOIN course_table c
+                ON c.course_id = co.course_id
+            WHERE e.student_id = :studentId
+            """, nativeQuery = true)
+    List<Object[]> getStudentMarks(String studentId);
 
 }

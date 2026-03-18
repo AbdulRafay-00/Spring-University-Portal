@@ -14,7 +14,7 @@ import com.example.University.Portal.Database_Connection.AcademicCalender.Academ
 import com.example.University.Portal.Database_Connection.StudentCourseEnroll.StudentCourseEnrollment;
 import com.example.University.Portal.Repository.AcademicTimeTableRepository;
 import com.example.University.Portal.services.AcademicSessionInfo.StudentPromotionService;
-import com.example.University.Portal.services.StudentCourseEnrollmentService.StudentCourseEnrollmentService;
+import com.example.University.Portal.services.StudentCourseEnrollmentService.StudentCourseEnrollmentServ;
 
 import jakarta.transaction.Transactional;
 
@@ -27,7 +27,7 @@ public class SessionSchedularService {
     @Autowired
     StudentPromotionService studentPromotionService;
     @Autowired
-    StudentCourseEnrollmentService enrollmentService;
+    StudentCourseEnrollmentServ enrollmentService;
 
 @Scheduled(cron = "0 0 0 * * ?")
 @Transactional

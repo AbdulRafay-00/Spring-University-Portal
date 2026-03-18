@@ -8,7 +8,7 @@ import com.example.University.Portal.Repository.StudentCourseEnrollmentRepositor
 // automatic called when the session is marked as completed in the AcademicTimeTableService
 // it will promote students to the next semester and also enroll them in the courses of the next
 @Service
-public class StudentCourseEnrollmentService {
+public class StudentCourseEnrollmentServ {
 
     @Autowired
     StudentCourseEnrollmentRepository enrollmentRepository;

@@ -131,4 +131,10 @@ public class StudentInfo {
     public String getSection() {
         return Section;
     }
+
+    public String getStudentId() {
+        return studentId;
+    }
+
+    
 }
