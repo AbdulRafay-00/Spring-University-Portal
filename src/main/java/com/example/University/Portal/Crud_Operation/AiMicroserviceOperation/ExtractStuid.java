@@ -59,8 +59,8 @@ public String getAiAnalysis(@RequestHeader("Authorization") String authHeader) {
 
 List<ResultAiResDto> studentMarks1 = rawList.stream()
     .map(r -> new ResultAiResDto(
-        (String) r[0],                  // courseName
-        ((Number) r[1]).intValue()      // marks
+        (String) r[0],  
+        ((Number) r[1]).intValue() 
     ))
     .collect(Collectors.toList());
 
