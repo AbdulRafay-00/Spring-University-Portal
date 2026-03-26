@@ -41,19 +41,16 @@ public class ExtractStuid {
 @GetMapping("/ai-analysis")
 public String getAiAnalysis(@RequestHeader("Authorization") String authHeader) {
 
-    // The JWT token comes as: "Bearer <token>"
+// The JWT token comes as: "Bearer <token>"
     String token = authHeader.replace("Bearer ", "");
 
-    // Extract email using your JwtServices
+// Extract email using your JwtServices
     String email = jwtServices.extractUserName(token);
-
-    // Now you have the email of the logged-in student
+// email print
     System.out.println("Logged-in student email: " + email);
-
-    // Example: fetch studentId from email
     String studentId = stuDetailRepository.findByStuEmail(email).get().getStudentId();
 
-    // Get marks for AI
+// Get marks for AI
     List<Object[]> rawList = studentCourseEnrollmentRepository.getStudentMarks(studentId);
 
 
