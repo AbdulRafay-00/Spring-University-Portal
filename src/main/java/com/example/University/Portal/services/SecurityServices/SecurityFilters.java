@@ -21,7 +21,7 @@ public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Excepti
         )
 
         .authorizeHttpRequests(auth -> auth
-            .requestMatchers( "/signup/stuSignup/**", "/login/**","/admin/**", "/signup/techSignup","/ai/ai-analysis").permitAll()
+            .requestMatchers( "/signup/stuSignup/**", "/login/**","/admin/**", "/signup/techSignup","/ai/ai-analysis", "/getStudentData").permitAll()
             // .requestMatchers("/signup/techSignup").hasRole("ADMIN")
             .anyRequest().authenticated()
         )
