@@ -38,6 +38,8 @@ public class ExtractStuid {
         this.kafkaProducerService = kafkaProducerService;
     }
 
+
+
 @GetMapping("/ai-analysis")
 public String getAiAnalysis(@RequestHeader("Authorization") String authHeader) {
 
