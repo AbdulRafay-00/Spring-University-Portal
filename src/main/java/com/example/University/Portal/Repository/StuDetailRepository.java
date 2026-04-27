@@ -35,4 +35,8 @@ public interface StuDetailRepository extends JpaRepository<StudentInfo, Long> {
        nativeQuery = true)
 int promoteAllStudents();
 
+
+
+    
+
 }

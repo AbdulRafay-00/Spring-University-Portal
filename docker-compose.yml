@@ -21,14 +21,14 @@ services:
   mysql:
     image: mysql:8.0.43
     environment:
-      MYSQL_ROOT_PASSWORD: Rafay12345
+      MYSQL_ROOT_PASSWORD: ${ADMIN_PASSWORD}
       MYSQL_DATABASE: University_portal
     ports:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pRafay12345"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-p${ADMIN_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -43,3 +43,7 @@ networks:
   kafka-network:
     external: true
     name: kafka-network
+
+
+
+    
